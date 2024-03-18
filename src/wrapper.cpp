@@ -61,7 +61,7 @@ extern "C" void dht_bootstrap(dht_t *dht, sockaddr sa[], size_t sa_count, done_c
     done_cb(success, done_ptr);
   };
 
-  #if OPENDHT_MAJOR_VERSION == 2
+  #if OPENDHT_MAJOR_VERSION >= 2
       std::vector<dht::SockAddr> vec;
   #else
       std::vector<std::pair<sockaddr_storage, unsigned int>> vec;
@@ -77,7 +77,7 @@ extern "C" void dht_bootstrap(dht_t *dht, sockaddr sa[], size_t sa_count, done_c
       else
           throw std::runtime_error("Unknown address family");
 
-      #if OPENDHT_MAJOR_VERSION == 2
+      #if OPENDHT_MAJOR_VERSION >= 2
           vec.push_back(dht::SockAddr(&sa[i], len));
       #else
           struct sockaddr_storage ss;
