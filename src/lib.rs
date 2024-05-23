@@ -20,7 +20,7 @@ pub struct InfoHash(digest::Digest);
 
 impl InfoHash {
     pub fn new<T: AsRef<[u8]>>(key: T) -> InfoHash {
-        let hash = digest::digest(&digest::SHA1, key.as_ref());
+        let hash = digest::digest(&digest::SHA1_FOR_LEGACY_USE_ONLY, key.as_ref());
         InfoHash(hash)
     }
 
